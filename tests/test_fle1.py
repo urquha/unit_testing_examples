@@ -12,5 +12,3 @@ def test_function_e(mock_function_a):
     # Assert something about the result
     assert result == "Mocked A", "Function E did not return the expected result"
 
-# Call the test function
-test_function_e()
