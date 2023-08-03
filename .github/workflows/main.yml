@@ -27,7 +27,7 @@ jobs:
       - name: Push changes
         run: |
           
-          cd /test_actions
+          cd test_actions
         
           
 
