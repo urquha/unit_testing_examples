@@ -26,7 +26,7 @@ jobs:
 
       - name: Push changes
         run: |
-          cd repo2
+          cd test_actions
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
