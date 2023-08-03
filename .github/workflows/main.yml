@@ -41,6 +41,7 @@ jobs:
           git config --get remote.origin.url
           git remote -v
           git checkout -b main2
+          git push --set-upstream origin main2
           git status
           
           echo 3
