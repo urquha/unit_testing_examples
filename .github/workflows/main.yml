@@ -36,6 +36,11 @@ jobs:
           git config --local user.email "action@github.com"
           echo 2
           git config --local user.name "GitHub Action"
+          git remote set-url origin https://${{ secrets.GH_PAT_TEST }}@github.com/urquha/test_actions.git
+          echo 6
+          git config --get remote.origin.url
+          git remote -v
+          git status
           echo 3
           git add .
           echo 4
@@ -45,8 +50,5 @@ jobs:
           # response=$(curl -H "Authorization: token ${{ secrets.GH_PAT_TEST }}" https://api.github.com/user)
           # echo $response
           echo ${{ secrets.GH_PAT_TEST }}
-          git remote set-url origin https://${{ secrets.GH_PAT_TEST }}@github.com/urquha/test_actions.git
-          echo 6
-          git config --get remote.origin.url
-          git remote -v
+          
           git push
