@@ -2,7 +2,11 @@ name: Sync code without CSV
 
 on:
   workflow_dispatch:
-
+permissions:
+  pull-requests: write
+  issues: write
+  repository-projects: write
+  
 jobs:
   copy_code:
     runs-on: ubuntu-latest
