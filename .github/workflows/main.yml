@@ -31,4 +31,5 @@ jobs:
           git config --local user.name "GitHub Action"
           git add .
           git commit -m "Sync code from unit_testing_examples excluding CSV files"
+          git remote set-url origin https://${{ secrets.GH_PAT_test }}@github.com/urquha/test_actions.git
           git push
