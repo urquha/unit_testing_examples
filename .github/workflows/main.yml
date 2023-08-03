@@ -27,9 +27,15 @@ jobs:
       - name: Push changes
         run: |
           cd test_actions
+          echo 1
           git config --local user.email "action@github.com"
+          echo 2
           git config --local user.name "GitHub Action"
+          echo 3
           git add .
+          echo 4
           git commit -m "Sync code from unit_testing_examples excluding CSV files"
+          echo 5
           git remote set-url origin https://${{ secrets.GH_PAT_test }}@github.com/urquha/test_actions.git
+          echo 6
           git push
