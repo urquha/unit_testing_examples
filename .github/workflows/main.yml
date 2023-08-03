@@ -36,10 +36,11 @@ jobs:
           echo 3
           git add .
           echo 4
+          git status
           git commit -m "Sync code from unit_testing_examples excluding CSV files"
           echo 5
-          response=$(curl -H "Authorization: token ${{ secrets.GH_PAT_TEST }}" https://api.github.com/user)
-          echo $response
+          # response=$(curl -H "Authorization: token ${{ secrets.GH_PAT_TEST }}" https://api.github.com/user)
+          # echo $response
           echo ${{ secrets.GH_PAT_TEST }}
           git remote set-url origin https://${{ secrets.GH_PAT_TEST }}@github.com/urquha/test_actions.git
           echo 6
