@@ -29,6 +29,10 @@ jobs:
           cd test_actions
           ls
           pwd
+          git config --get remote.origin.url
+          git remote -v
+
+
           echo 1
           git config --local user.email "action@github.com"
           echo 2
