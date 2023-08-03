@@ -26,19 +26,10 @@ jobs:
 
       - name: Push changes
         run: |
-          ls
-          cd ..
-          pwd
-          ls
-          pwd
-          cd ..
-          pwd
-          ls
-          cd unit_testing_examples/unit_testing_examples/test_actions
-          ls
-          pwd
-          git config --get remote.origin.url
-          git remote -v
+          
+          cd /test_actions
+        
+          
 
 
           echo 1
@@ -56,4 +47,6 @@ jobs:
           echo ${{ secrets.GH_PAT_TEST }}
           git remote set-url origin https://${{ secrets.GH_PAT_TEST }}@github.com/urquha/test_actions.git
           echo 6
+          git config --get remote.origin.url
+          git remote -v
           git push
