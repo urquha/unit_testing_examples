@@ -28,8 +28,11 @@ jobs:
         run: |
           ls
           cd ..
+          pwd
           ls
+          pwd
           cd ..
+          pwd
           ls
           cd unit_testing_examples/unit_testing_examples/test_actions
           ls
