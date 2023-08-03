@@ -1,0 +1,34 @@
+name: Sync code without CSV
+
+on:
+  workflow_dispatch:
+
+jobs:
+  copy_code:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo1
+        uses: actions/checkout@v3
+        with:
+          repository: 'urquha/unit_testing_examples'
+          path: 'unit_testing_examples'
+
+      - name: Checkout repo2
+        uses: actions/checkout@v3
+        with:
+          repository: 'urquha/test_actions'
+          path: 'test_actions'
+          
+      - name: Copy code without CSV files
+        run: |
+          rsync -a --exclude='*.csv' unit_testing_examples/ test_actions/
+
+      - name: Push changes
+        run: |
+          cd repo2
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Sync code from unit_testing_examples excluding CSV files"
+          git push
