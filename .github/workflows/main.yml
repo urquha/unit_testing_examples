@@ -26,7 +26,12 @@ jobs:
 
       - name: Push changes
         run: |
-          cd test_actions
+          ls
+          cd ..
+          ls
+          cd..
+          ls
+          cd unit_testing_examples/unit_testing_examples/test_actions
           ls
           pwd
           git config --get remote.origin.url
