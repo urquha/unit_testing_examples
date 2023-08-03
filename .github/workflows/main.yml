@@ -27,6 +27,8 @@ jobs:
       - name: Push changes
         run: |
           cd test_actions
+          ls
+          pwd
           echo 1
           git config --local user.email "action@github.com"
           echo 2
