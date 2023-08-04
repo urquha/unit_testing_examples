@@ -40,13 +40,15 @@ jobs:
           git config --local user.email "action@github.com"
           echo 2
           git config --local user.name "GitHub Action"
+          git remote -v
           git remote set-url origin https://${{ secrets.GH_PAT_TEST }}@github.com/urquha/test_actions.git
-          git pull
           echo 6
           git config --get remote.origin.url
           git remote -v
-          git checkout -b main2
-          git push --set-upstream origin main2
+          # git checkout -b main2
+          # git push --set-upstream origin main2
+          echo gitpull
+          git pull
           git status
           
           echo 3
