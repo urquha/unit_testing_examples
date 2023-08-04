@@ -25,7 +25,6 @@ jobs:
           path: test_actions
 
       - name: push
-        uses: actions/checkout@v3
         run: |
           date > generated.txt
           git config user.name github-actions
