@@ -12,51 +12,60 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo1
+      - name: Checkout
         uses: actions/checkout@v3
         with:
-          repository: 'urquha/unit_testing_examples'
-          path: 'unit_testing_examples'
-
-      - name: Checkout repo2
+          path: main
+      
+      - name: Checkout tools repo
         uses: actions/checkout@v3
         with:
-          repository: 'urquha/test_actions'
-          path: 'test_actions'
-          
-      - name: Copy code without CSV files
-        run: |
-          rsync -a --exclude='*.csv' unit_testing_examples/ test_actions/
+          repository: urquha/test_actions
+          # token: ${{ secrets.GH_PAT_TEST }}
+          path: test_actions
 
-      - name: Push changes
-        run: |
+      - name: push
+      - uses: actions/checkout@v3
+      - run: |
+          date > generated.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push
+      # - name: Copy code without CSV files
+      #   run: |
+      #     rsync -a --exclude='*.csv' unit_testing_examples/ test_actions/
+
+      # - name: Push changes
+      #   run: |
           
-          cd test_actions
+      #     cd test_actions
         
           
 
 
-          echo 1
-          git config --local user.email "action@github.com"
-          echo 2
-          git config --local user.name "GitHub Action"
-          git remote -v
-          # git remote set-url origin https://github.com/urquha/test_actions.git
-          echo 6
-          git config --get remote.origin.url
-          git remote -v
-          # git checkout -b main2
-          # git push --set-upstream origin main2
-          git status
+      #     echo 1
+      #     git config --local user.email "action@github.com"
+      #     echo 2
+      #     git config --local user.name "GitHub Action"
+      #     git remote -v
+      #     # git remote set-url origin https://github.com/urquha/test_actions.git
+      #     echo 6
+      #     git config --get remote.origin.url
+      #     git remote -v
+      #     # git checkout -b main2
+      #     # git push --set-upstream origin main2
+      #     git status
           
-          echo 3
-          git add .
-          echo 4
-          git status
-          git commit -m "Sync code from unit_testing_examples excluding CSV files"
-          echo 5
-          # response=$(curl -H "Authorization: token ${{ secrets.GH_PAT_TEST }}" https://api.github.com/urquha)
-          # echo $response
+      #     echo 3
+      #     git add .
+      #     echo 4
+      #     git status
+      #     git commit -m "Sync code from unit_testing_examples excluding CSV files"
+      #     echo 5
+      #     # response=$(curl -H "Authorization: token ${{ secrets.GH_PAT_TEST }}" https://api.github.com/urquha)
+      #     # echo $response
           
           
-          git push --force origin main
+      #     git push --force origin main
