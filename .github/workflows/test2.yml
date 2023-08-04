@@ -23,8 +23,8 @@ jobs:
           git add .
           git commit -m "generated"
           git push origin HEAD
-        env:
-          GIT_AUTH_TOKEN: ${{ secrets.PAT_SECRET_NAME }}
+        # env:
+        #   GIT_AUTH_TOKEN: ${{ secrets.PAT_SECRET_NAME }}
 
       - name: Commit and push rm test.txt
         run: |
