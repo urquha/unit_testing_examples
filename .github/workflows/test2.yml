@@ -7,14 +7,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout tools repo
-        uses: actions/checkout@v3
-        with:
+      - uses: actions/checkout@v3
+      - with:
           repository: urquha/test_actions
           # token: ${{ secrets.GH_PAT_TEST }}
           path: test_actions
-    
-      - uses: actions/checkout@v3
       - run: |
           git remote set-url origin https://github.com/urquha/test_actions.git
           git config pull.rebase true
@@ -26,16 +23,18 @@ jobs:
           git commit -m "generated"
           git push
 
-      - uses: actions/checkout@v3
-      - run: |
-          git pull
-          ls
-          echo ----
-          rm -rf test.txt
-          ls
-          echo ----
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add .
-          git commit -m "generated"
-          git push
+    
+      
+      # - uses: actions/checkout@v3
+      # - run: |
+      #     git pull
+      #     ls
+      #     echo ----
+      #     rm -rf test.txt
+      #     ls
+      #     echo ----
+      #     git config user.name github-actions
+      #     git config user.email github-actions@github.com
+      #     git add .
+      #     git commit -m "generated"
+      #     git push
