@@ -41,7 +41,7 @@ jobs:
           echo 2
           git config --local user.name "GitHub Action"
           git remote -v
-          git remote set-url origin https://github.com/urquha/test_actions.git
+          # git remote set-url origin https://github.com/urquha/test_actions.git
           echo 6
           git config --get remote.origin.url
           git remote -v
