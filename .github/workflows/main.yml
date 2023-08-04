@@ -21,7 +21,7 @@ jobs:
 
       - name: Copy files to target repository
         run: |
-          cp -R ./current_repo/* ./target_repo/
+          cp -R ./unit_testing_examples/* ./test_actions/
 
 
       - name: Commit and push
