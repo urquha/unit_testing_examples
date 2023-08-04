@@ -41,6 +41,7 @@ jobs:
           echo 2
           git config --local user.name "GitHub Action"
           git remote set-url origin https://${{ secrets.GH_PAT_TEST }}@github.com/urquha/test_actions.git
+          git pull
           echo 6
           git config --get remote.origin.url
           git remote -v
@@ -54,7 +55,7 @@ jobs:
           git status
           git commit -m "Sync code from unit_testing_examples excluding CSV files"
           echo 5
-          # response=$(curl -H "Authorization: token ${{ secrets.GH_PAT_TEST }}" https://api.github.com/user)
+          # response=$(curl -H "Authorization: token ${{ secrets.GH_PAT_TEST }}" https://api.github.com/urquha)
           # echo $response
           echo ${{ secrets.GH_PAT_TEST }}
           
