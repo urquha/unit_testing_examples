@@ -19,10 +19,9 @@ jobs:
           token: ${{ secrets.GH_PAT_TEST }} # ensure this token has the right permissions
           path: './test_actions'
 
-      - name: Copy files to target repository
+      - name: Copy files (excluding CSV) to target repository
         run: |
-          cp -R ./unit_testing_examples/* ./test_actions/
-
+          rsync -av --progress --exclude '*.csv' ./current_repo/ ./target_repo/
 
       - name: Commit and push
         run: |
