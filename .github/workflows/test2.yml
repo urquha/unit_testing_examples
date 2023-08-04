@@ -14,10 +14,23 @@ jobs:
           # token: ${{ secrets.GH_PAT_TEST }}
           path: test_actions
 
-      - name: Commit and push
+      - name: Commit and push touch test.txt
         run: |
           cd ./test_actions # Change directory to the 'test_actions'
           touch test.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push origin HEAD
+        env:
+          GIT_AUTH_TOKEN: ${{ secrets.PAT_SECRET_NAME }}
+
+      - name: Commit and push rm test.txt
+        run: |
+          cd ./test_actions # Change directory to the 'test_actions'
+          git pull
+          rm -rf test.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
