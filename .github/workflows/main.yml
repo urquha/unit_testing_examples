@@ -47,10 +47,6 @@ jobs:
           git remote -v
           # git checkout -b main2
           # git push --set-upstream origin main2
-          echo gitpull
-          git config pull.rebase true
-          git merge --no-ff
-          git pull
           git status
           
           echo 3
@@ -61,6 +57,6 @@ jobs:
           echo 5
           # response=$(curl -H "Authorization: token ${{ secrets.GH_PAT_TEST }}" https://api.github.com/urquha)
           # echo $response
-          echo ${{ secrets.GH_PAT_TEST }}
           
-          git push
+          
+          git push --force origin main
