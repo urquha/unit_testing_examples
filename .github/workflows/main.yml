@@ -21,7 +21,8 @@ jobs:
 
       - name: Copy files to target repository
         run: |
-          cp -R ./unit_testing_examples/* ./test_actions/
+          rsync -av --progress ./unit_testing_examples/ ./test_actions/ --exclude '*.csv'
+
 
       - name: Commit and push
         run: |
