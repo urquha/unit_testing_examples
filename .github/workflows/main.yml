@@ -27,9 +27,9 @@ jobs:
       - name: Commit and push
         run: |
           cd ./test_actions
-          git rev-parse --show-toplevel
+          git config --get remote.origin.url
           git pull
-          git rev-parse --show-toplevel
+          git config --get remote.origin.url
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
