@@ -48,7 +48,7 @@ jobs:
           # git checkout -b main2
           # git push --set-upstream origin main2
           echo gitpull
-          git config pull.ff only 
+          git merge --no-ff
           git pull
           git status
           
