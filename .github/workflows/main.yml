@@ -31,3 +31,14 @@ jobs:
           git add .
           git commit -m "Update from source repository"
           git push origin HEAD
+
+      - name: Cleanup
+        run: |
+          cd ./test_actions
+          rm -rf *
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Update from source repository"
+          git push origin HEAD
+
