@@ -21,8 +21,7 @@ jobs:
 
       - name: Copy files (excluding CSV) to target repository
         run: |
-          rsync -av --progress --exclude '*.csv' ./current_repo/ ./target_repo/
-
+          rsync -av --exclude='*.csv' ./unit_testing_examples/ ./test_actions/
       - name: Commit and push
         run: |
           cd ./test_actions
