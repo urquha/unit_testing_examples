@@ -1,70 +1,33 @@
-name: Sync code without CSV
+name: test push
 
 on:
   workflow_dispatch:
-permissions:
-  pull-requests: write
-  issues: write
-  repository-projects: write
   
 jobs:
-  copy_code:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
+      - name: Checkout current repository
         uses: actions/checkout@v3
         with:
-          path: main
-      
-      - name: Checkout tools repo
-        uses: actions/checkout@v3
-        with:
-          repository: urquha/test_actions
-          # token: ${{ secrets.GH_PAT_TEST }}
-          path: test_actions
+          path: './unit_testing_examples'
 
-      - uses: actions/checkout@v3
-      - run: |
-          touch test.txt
+      - name: Checkout target repository
+        uses: actions/checkout@v3
+        with:
+          repository: 'urquha/test_actions'
+          token: ${{ secrets.GH_PAT_TEST }} # ensure this token has the right permissions
+          path: './test_actions'
+
+      - name: Copy files to target repository
+        run: |
+          cp -R ./unit_testing_examples/* ./test_actions/
+
+      - name: Commit and push
+        run: |
+          cd ./test_actions
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git commit -m "generated"
-          git push
-      # - name: Copy code without CSV files
-      #   run: |
-      #     rsync -a --exclude='*.csv' unit_testing_examples/ test_actions/
-
-      # - name: Push changes
-      #   run: |
-          
-      #     cd test_actions
-        
-          
-
-
-      #     echo 1
-      #     git config --local user.email "action@github.com"
-      #     echo 2
-      #     git config --local user.name "GitHub Action"
-      #     git remote -v
-      #     # git remote set-url origin https://github.com/urquha/test_actions.git
-      #     echo 6
-      #     git config --get remote.origin.url
-      #     git remote -v
-      #     # git checkout -b main2
-      #     # git push --set-upstream origin main2
-      #     git status
-          
-      #     echo 3
-      #     git add .
-      #     echo 4
-      #     git status
-      #     git commit -m "Sync code from unit_testing_examples excluding CSV files"
-      #     echo 5
-      #     # response=$(curl -H "Authorization: token ${{ secrets.GH_PAT_TEST }}" https://api.github.com/urquha)
-      #     # echo $response
-          
-          
-      #     git push --force origin main
+          git commit -m "Update from source repository"
+          git push origin HEAD
